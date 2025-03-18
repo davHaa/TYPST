@@ -2,7 +2,7 @@
 header:[
   #grid(
     columns: (auto, auto), rows: (auto),
-    grid.cell(image("htl3r_logo.jpg",height: auto,width: 40mm))    
+    grid.cell(image("../htl3r_logo.jpg",height: auto,width: 40mm))    
   )
   #line(length: 100%)
   #h(15pt)
