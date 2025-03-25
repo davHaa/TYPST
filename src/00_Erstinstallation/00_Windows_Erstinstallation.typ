@@ -1,28 +1,38 @@
+#let sharepoint = "https://htl3r.sharepoint.com/sites/IT-SYT-BS/Freigegebene%20Dokumente"
+#let mainPage = "https://www.htlrennweg.at/"
+
 #set page(
   width: 210mm,
   height: 297mm,
-  margin: 25mm,
+  margin: (top: 50mm, bottom: 25mm, left: 25mm, right: 25mm),
 
   header: [
-    #v(8mm)
-    #align(right)[
-      #text(weight: "bold", size: 1.2em, "SYT/BS: Windows Erstinstallation")
-    ]
-    #align(right)[
-      #text(size: 1em, "Übungsblatt 00")
-    ]
-    #align(right)[
-      #text(size: 0.9em, "Schuljahr 2024/25 an der HTL Wien 3 Rennweg")
-    ]
-    #align(right)[
-      #text(size: 0.9em, "Rennweg 89b, 1030 Wien")
-    ]
-    #v(10mm)
-    #line(length: 100%)
-  ],
+    
+        // Left column - Logo
+        #image("../htl3r_logo.jpg", width: 25mm)
+        
+        // Right column - Header content
+        #align(right)[
+          #link(sharepoint)[
+            #text(weight: "bold", size: 1.2em, "SYT/BS: Windows Erstinstallation")
+          ]
+          #v(-4mm)
+          #text("Übungsblatt 00")
+          #v(-3mm)
+          #text(size: 0.9em, "Schuljahr 2024/25 an der ")
+          #link(mainPage)[
+            #text(size: 0.9em, "HTL Wien 3 Rennweg")
+          ]
+          #v(-3mm)
+          #link(mainPage)[
+            #text(size: 0.9em, "Rennweg 89b, 1030 Wien")
+          ]
+          #v(-2mm)
+          #line(length: 100%)
+        ]
+      ],
 
   footer: [
-    #v(23139mm)
     #line(length: 100%)
     #v(1mm)
     #align(left)[Version vom 18. März 2025]
@@ -38,7 +48,7 @@ Vorbereitend für die folgenden Laborübungen wollen wir:
 - einen ersten virtuellen Computer ("Virtuelle Maschine", VM) selbst "bauen" und
 - darauf ein aktuelles Windows (von einer virtuellen Installations-DVD) installieren.
 
-~~~#emph[Bemerkung:] In den folgenden Laborübungen werden vorbereitete virtuelle Maschinen einfach ~~~kopiert (sog. #emph[Cloning]), damit nicht immer eine Neuinstallation notwendig ist.
+~~~#emph[Bemerkung:] In den folgenden Laborübungen werden vorbereitete virtuelle Maschinen einfach ~~~kopixert (sog. #emph[Cloning]), damit nicht immer eine Neuinstallation notwendig ist.
 
 Im Anschluss werden einige Kenndaten auf unserem virtuellen PC ermittelt und in einem ersten Labor-Protokoll dokumentiert.
 
