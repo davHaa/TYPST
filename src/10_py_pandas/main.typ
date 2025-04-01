@@ -1,20 +1,9 @@
-#set page(width: 210mm, height: 297mm, margin: 20mm,
-header:[
-  #grid(
-    columns: (auto, auto), rows: (auto),
-    grid.cell(image("../htl3r_logo.jpg",height: auto,width: 40mm))
-  )
-  #line(length: 100%)
-  #h(15pt)
-],
-footer: [
-  #line(length: 100%)
-  #table(
-    columns: (50%, 50%), rows:(auto), align: (left, right), stroke: none,
-    [Version vom 25. März 2025],
-    []
-  )
-])
+#import "../template.typ": header, footer
+
+#set page(width: 210mm, height: 297mm, margin: (top: 50mm, bottom: 25mm, left: 20mm, right: 20mm),
+  header: header,
+  footer: footer
+)
 
 = A Aufgabenstellung
 Lehrer müssen oft Noten- und Schülerlisten in verschiedenen Formaten zusammenführen. Entwickle ein kleines Hilfsprogramm für die Kommandozeile (CLI), die einem Lehrer beim Zusammenführen einer Noten- und Schülerliste unterstützt.
