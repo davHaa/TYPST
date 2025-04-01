@@ -1,8 +1,7 @@
 #let sharepoint = "https://htl3r.sharepoint.com/sites/IT-SYT-BS/Freigegebene%20Dokumente"
 #let mainPage = "https://www.htlrennweg.at/"
 
-#set page(width: 210mm, height: 297mm, margin: (top: 50mm, bottom: 25mm, left: 20mm, right: 20mm),
-header:[
+#let header = [
   #table(
     columns: (50%, 50%), rows: (90pt), stroke: none, align: (left, right),
     image("htl3r_logo.jpg"),
@@ -23,12 +22,18 @@ header:[
   )
   #line(length: 100%)
   #v(-10mm)
-],
-footer: [
+]
+
+#let footer = [
   #line(length: 100%)
   #table(
     columns: (50%, 50%), rows:(auto), align: (left, right), stroke: none,
     [Version vom 25. März 2025],
-    []
+    [test]
   )
-])
+]
+
+#set page(width: 210mm, height: 297mm, margin: (top: 50mm, bottom: 25mm, left: 20mm, right: 20mm),
+  header: header,
+  footer: footer
+)
