@@ -17,7 +17,7 @@
             #text(weight: "bold", size: 1.2em, "SEW 4: py comprehension")
           ]
           #v(-4mm)
-          #text("Übungsblatt 09")
+          #text("Übungsblatt 08")
           #v(-3mm)
           #text(size: 0.9em, "Schuljahr 2024/25 an der ")
           #link(mainPage)[
