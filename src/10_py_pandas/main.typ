@@ -1,10 +1,11 @@
-#import "../template.typ": header, footer
+#import "../template.typ": page_template
 
-#set page(width: 210mm, height: 297mm, margin: (top: 50mm, bottom: 25mm, left: 20mm, right: 20mm),
-  header: header,
-  footer: footer
-)
+#set page(width: 210mm, height: 297mm, margin: (top: 10mm, bottom: 20mm, left: 15mm, right: 15mm),header-ascent: -18mm,
 
+header : page_template.header,
+  footer : page_template.footer)
+
+  #v(35mm)
 = A Aufgabenstellung
 Lehrer müssen oft Noten- und Schülerlisten in verschiedenen Formaten zusammenführen. Entwickle ein kleines Hilfsprogramm für die Kommandozeile (CLI), die einem Lehrer beim Zusammenführen einer Noten- und Schülerliste unterstützt.
 
