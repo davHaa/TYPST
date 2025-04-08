@@ -33,7 +33,7 @@
     #table(
       columns: (50%, 50%), rows:(auto), align: (left, right), stroke: none,
       [Version vom 25. März 2025],
-      [test]
+      [#context [#here().page()]/#context[#counter(page).final().at(0)]]
     )
   ]
 )
