@@ -1,11 +1,17 @@
-#import "../template.typ": page_template
+#import "../template.typ": create_page_template
 
-#set page(width: 210mm, height: 297mm, margin: (top: 10mm, bottom: 20mm, left: 15mm, right: 15mm),header-ascent: -18mm,
+#let filename = "00_Windows_Erstinstallation"
 
-header : page_template.header,
-  footer : page_template.footer)
+#set page(
+  width: 210mm, 
+  height: 297mm, 
+  margin: (top: 10mm, bottom: 25mm, left: 15mm, right: 15mm),
+  header-ascent: -20mm, 
+  header: create_page_template(filename).header,
+  footer: create_page_template(filename).footer
+)
 
-  #v(35mm)
+#v(35mm)
 
 == A~~~ Zielsetzung
 
