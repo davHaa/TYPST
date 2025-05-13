@@ -114,33 +114,98 @@ mit weniger als 4GiB Arbeitsspeicher startet.
 
 == E~~~ Windows-Installation
 
-1. *Optional:* Boot-Reihenfolge überprüfen und sicherstellen, dass das DVD-Laufwerk vor der Festplatte liegt.
+ (5) ~~~Optional– nur für Interessierte: Überprüfen Sie die Boot-Reihenfolge der VM in der Firmware
+ (BIOS/UEFI) indem Sie direkt in die (emulierte) Phoenix-Firmware booten– das DVD-Laufwerk sollte
+ vor der Festplatte in der Boot-Reihenfolge stehen (sonst würde das System von der Festplatte booten …
+ in unserem Fall ist diese aber leer, also kein Problem). Tipp: VM → Power → Power On to Firmware
 
-2. VM starten, Startzeit der Installation notieren.
+ (6) ~~~Starten Sie die VM und notieren Sie die Startzeit der Installation! Zählen Sie ab jetzt auch die Zahl der
+ Neustarts bis zum Abschluss der Installation (= Desktop erscheint)!
 
-3. Windows-Installationsanweisungen folgen:
-   - *Lokalisierung:* Deutsch/Österreich
-   - *Edition:* Education (kein Produktschlüssel erforderlich)
-   - *Benutzerdefinierte Installation* auf die gesamte Festplatte
-   - *Benutzer:* `junioradmin` (Passwort: `junioradmin`)
-   - *Datenschutzeinstellungen* anpassen
-4. Installationsdauer und Anzahl der Neustarts notieren.
-5. Computer umbenennen: `UE01-Nachname-Vorname`.
-6. Einen *Snapshot* der VM erstellen (bei heruntergefahrener VM).
-7. *VMware-Tools* installieren und nach Installation einen weiteren *Snapshot* erstellen.
+ (7) FolgenSiedenInstallationsanweisungen, bei Nachfrage des Setup-Programms geben Sie sinnvolle Vorgaben
+ (in Ihrem Ermessen), auf jeden Fall aber:
 
+ a) Lokalisierung (Uhrzeit und Währungsformat): Deutsch/Österreich
+
+ b) Sie haben keinen Produktschlüssel und möchten Windows 11 in der Education3-Edition installieren
+
+ c)
+ Benutzerdefinierte Installation auf die gesamte 40 GiB-Festplatte
+
+d) WährendSie warten, recherchieren Sie im Web, welche Editionen es von Windows 11 gibt (Protokoll!)und nennen Sie einige Ihrer Meinung nach wesentliche Unterschiede (kann man auch später oder zuhause machen)!
+
+e) Setzen Sie Lokalisierungsinformationen (Ort, Sprache, Tastatur) und überspringen Sie etwaige Auf
+forderungen zur Netzwerkkonfiguration
+
+f) Nennen Sie den (lokalen!) Benutzer junioradmin (Passwort sei auch junioradmin, Hin
+weis/Sicherheitsfragen beliebig – bitte hier notieren).
+
+g) VerwendenSieansonsten nicht die Standard-Datenschutzeinstellungen, sondern passen Sie die Einstellungen sinnvoll an (so dass diese Ihren Ansprüchen an Vertraulichkeit genügen – bitte hier notieren)
+
+h) Notieren Sie bei Erscheinen des Desktops erneut die Zeit und beantworten Sie …
+ 
+~~~~~i. Wie lange hat die Installation gedauert?
+~~~~~ii. Wie viele Neustarts waren erforderlich?
+~~~~~iii. Wie vergleicht sich das mit Ihren bisherigen Windows-Installationserfahrungen?
+
+i) Ändern Sie den Namen des Computers auf UE01-IhrFamilienname-IhrVorname (Tipp: Systemsteue
+rung → Kleine Symbole → System → Erweiterte Systemeinstellungen oder schneller: Tastenkombina
+tion Windows + Pause)! Wie lautete der Standardname? Was ist notwendig, damit die Änderung des Computernamens tatsächlich durchgeführt wird? Dokumentieren Sie hier anhand eines Screenshots4, dass Ihr Rechner erfolgreich umbenannt wurde!
+
+(8) Jetzt ist ein guter Zeitpunkt um einen Snapshot zu erstellen. VMware speichert den Zustand der virtuellenv Maschine (Festplatte und Einstellungen), man kann jederzeit zu diesem Zustand zurückkehren. Mache Sie den Snapshot am besten bei heruntergefahrener VM! Dokumentieren Sie die Schritte, um einen Snapshot zu erstellen!
+
+(9) Installieren Sie die VMware-Tools (VM → Install …), um die VM über einen besseren Anzeigetreiber zu beschleunigen und auch bequemer bedienen zu können. Insbesondere erlauben diese Gasterweiterungen, dass man die Bildschirmauflösung beliebig einstellen kann und Dateien bequem per Copy/Paste bzw Drag’n’Drop kopieren kann. Wenn der Rechner nach der Installation (einfach das richtige Setup-Programm von der – virtuellen
+DVDstarten und Standardinstallation durchklicken) neu gebootet wird, sollte man wieder einen Snapshot anlegen! Überprüfen Sie im Info-Bereich rechts, ob der VMware-Tools-Dienst ausgeführt wird – welche Version der Tools ist installiert?
 
 == F~~~  Erkunden und Analyse des PCs
 
-Ermitteln Sie folgende Informationen und dokumentieren Sie, wie Sie diese erhalten haben:
+Erkunden Sie Ihren neuen Computer – beantworten Sie folgende Fragen und geben Sie jeweils an, wie Sie diese Information erhalten haben!
 
-- *Windows-Version* (inkl. Build-Nummer)
-- *RAM:* Gesamtgröße und verfügbarer Speicher
-- *CPU:* Hersteller, Modell, Taktfrequenz
-- *Festplatte:* Datenträger, Größe (GiB und Bytes), belegter und freier Speicher
-- *Schnelle Navigation zu Windows-Werkzeugen:*
-  - *Task-Manager, Explorer, Systemeigenschaften, Terminal (PowerShell)*
-  - *Virtuelle Desktops nutzen* (Taschenrechner in einem, Task-Manager im anderen)
+Tipp: Wechseln Sie die Ansicht ihrer VM in den Vollbildmodus (Full Screen)!
+
+Tipp: Sollten Sie diese Schritte später/zuhause durchführen, können Sie einen beliebigen Windows-11-PC verwenden – aber bitte im Protokoll vermerken!
+
+(10) Machen Sie sich mit dem Windows 11 User Interface vertraut. Dokumentieren und merken Sie sich, wie man folgende Werkzeuge möglichst schnell aufrufen kann! (Tipp: Nutzen Sie das Handout über Windows Tastenkombinationen!)
+
+a) Erweitertes Kontextmenü (Quicklink zu den wichtigsten Verwaltungswerkzeugen im Desktop)
+
+b) Explorer-Fenster öffnen Hauptfenster
+
+c) Einstellungen (Modern UI Style)
+ 
+d) Systemsteuerung (klassisch)
+
+e) Task-Manager
+
+f)  Systemeigenschaften (Info-Feld “System”)
+
+g) Geräte-Manager
+
+h) Terminal = Kommandozeile: ist seit Windows 10 1703 (Creators Update) nicht mehr CMD sondern die Powershell
+
+i) Snipping-Tool, um einen Screenshot in die Zwischenablage zu kopieren
+
+j) Bonus: Fügen Sie zwei virtuelle Desktops hinzu und starten Sie im ersten der neuen virtuellen Desk
+tops den Taschenrechner calc.exe und im anderen den Task-Manager. Wozu sind virtuelle Desktops nützlich?
+
+(11) Welche Windows-Version (mit genauer Build-Nummer) haben Sie installiert? Mit welchem Programm (das Sie mit Windows-R starten können haben Sie das ermittelt?
+
+(12) RAM– Arbeitsspeicher/Hauptspeicher (wie ermitteln Sie das?):
+
+a) Wie viel Hauptspeicher (RAM) hat der PC insgesamt– Wie viele Bytes sind das?
+
+b) Dielaufenden Programme verbrauchen Platz im Arbeitsspeicher– wie viel RAM ist noch für weitere Programme verfügbar?
+
+(13) CPU– Prozessor → Ermitteln Sie:
+
+a) Hersteller
+
+b) Modell/Typ
+
+c) Taktfrequenz
+
+(14) Disk: Welche Datenträger (uns interessieren die Festplatten) gibt es auf diesem Rechner, wie groß sind sie jeweils (in Gibibyte5 und in Bytes) und wie viel Plattenplatz ist in den einzelnen Partitionen (Teilbereiche) jeweils schon in Verwendung bzw. noch frei (Tipp: Datenträgerverwaltung)?
+
 
 Viel Spaß!
 

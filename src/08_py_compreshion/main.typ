@@ -1,45 +1,15 @@
-#let sharepoint = "https://htl3r.sharepoint.com/sites/IT-SYT-BS/Freigegebene%20Dokumente"
-#let mainPage = "https://www.htlrennweg.at/"
+#import "../template.typ": create_page_template
+
+#let filename = "08_py_compreshion"
 
 #set page(
-  width: 210mm,
-  height: 297mm,
-  margin: (top: 50mm, bottom: 25mm, left: 25mm, right: 25mm),
-
-  header: [
-    
-        // Left column - Logo
-        #image("../htl3r_logo.jpg", width: 40mm)
-        
-        // Right column - Header content
-        #align(right)[
-          #link(sharepoint)[
-            #text(weight: "bold", size: 1.2em, "SEW 4: py comprehension")
-          ]
-          #v(-4mm)
-          #text("Übungsblatt 08")
-          #v(-3mm)
-          #text(size: 0.9em, "Schuljahr 2024/25 an der ")
-          #link(mainPage)[
-            #text(size: 0.9em, "HTL Wien 3 Rennweg")
-          ]
-          #v(-3mm)
-          #link(mainPage)[
-            #text(size: 0.9em, "Rennweg 89b, 1030 Wien")
-          ]
-          #v(-2mm)
-          #line(length: 100%)
-        ]
-      ],
-
-  footer: [
-    #line(length: 100%)
-    #v(1mm)
-    #align(left)[Version vom 18. März 2025]
-  ]
+  width: 210mm, 
+  height: 297mm, 
+  margin: (top: 35mm, bottom: 25mm, left: 15mm, right: 15mm),
+  header-ascent: 5mm, 
+  header: create_page_template(filename).header,
+  footer: create_page_template(filename).footer
 )
-
-
 = A List/Set/Dictionary Comprehension - Theorie
 
 ```python
