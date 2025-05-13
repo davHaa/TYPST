@@ -46,7 +46,7 @@ lichen ist der Ablauf folgendermaßen:
 
 a) Eine neue VM (New Virtual Machine → Custom (Advanced)) anlegen (das Betriebssystem installierennwir später - I will install operating system later)
 
-b) Als Betriebssystem wählen Sie Microsoft Windows → Windows 11 x64
+a) Als Betriebssystem wählen Sie Microsoft Windows → Windows 11 x64
 
 c) Benennen Sie die VM gleich nach unserem Laborstandard, also etwa
 Windows11_Pro_Edu_Nachname_Vorname_UE01
@@ -92,7 +92,7 @@ Windows 11 trotzdem funktioniert.
 a) Starten Sie die VM, umd booten Sie von der DVD. Falls Sie in der VM “eingesperrt” sind (Maus
 funktioniert nicht), kommen Sie wieder mit der Tastenkombination Ctrl + Alt heraus.
 
-b) Sobald das Fenster zur Eingabe der Sprachen erscheint, starten Sie mit folgendem Vollprofi-
+c) Sobald das Fenster zur Eingabe der Sprachen erscheint, starten Sie mit folgendem Vollprofi-
 Geheimtrick die Kommandozeile: Tastenkombination Shift + F10.
 
 c) Öffnen Sie den Registrierungseditor2, indem Sie regedit eingeben.
@@ -206,7 +206,16 @@ c) Taktfrequenz
 
 (14) Disk: Welche Datenträger (uns interessieren die Festplatten) gibt es auf diesem Rechner, wie groß sind sie jeweils (in Gibibyte5 und in Bytes) und wie viel Plattenplatz ist in den einzelnen Partitionen (Teilbereiche) jeweils schon in Verwendung bzw. noch frei (Tipp: Datenträgerverwaltung)?
 
+#table(
+  columns: (auto, auto, auto, auto, auto, auto, auto),
+  inset: 20pt,
+
+  align: horizon,
+  table.header(
+    [Volume / Laufwerks-Name], [Dateisystemtyp], [Gesamtgröße in GiB], [Gesamtgröße in Bytes], [Belegt (GiB)], [Frei (Gi)], [Belegt B) (%)]
+  )
+)
+
 
 Viel Spaß!
-
 
