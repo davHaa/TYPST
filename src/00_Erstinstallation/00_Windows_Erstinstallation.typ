@@ -5,25 +5,26 @@
 #set page(
   width: 210mm, 
   height: 297mm, 
-  margin: (top: 10mm, bottom: 25mm, left: 15mm, right: 15mm),
-  header-ascent: -20mm, 
+  margin: (top: 35mm, bottom: 25mm, left: 15mm, right: 15mm),
+  header-ascent: 5mm, 
   header: create_page_template(filename).header,
   footer: create_page_template(filename).footer
 )
 
-#v(35mm)
 
 == A~~~ Zielsetzung
-
+#v(2mm)
 Vorbereitend für die folgenden Laborübungen wollen wir:
 
 - uns mit der Umgebung zur Rechnervirtualisierung im Labor vertraut machen,
 - einen ersten virtuellen Computer ("Virtuelle Maschine", VM) selbst "bauen" und
 - darauf ein aktuelles Windows (von einer virtuellen Installations-DVD) installieren.
 
-~~~#emph[Bemerkung:] In den folgenden Laborübungen werden vorbereitete virtuelle Maschinen einfach ~~~kopixert (sog. #emph[Cloning]), damit nicht immer eine Neuinstallation notwendig ist.
+~~~#emph[Bemerkung:] In den folgenden Laborübungen werden wir von vorbereiteten virtuellen Maschinen einfach eine
+~~~Kopie für den Eigengebrauch machen (sog. #emph[Cloning]), damit wir nicht immer selbst installieren müssen.
 
-Im Anschluss werden einige Kenndaten auf unserem virtuellen PC ermittelt und in einem ersten Labor-Protokoll dokumentiert.
+Im Anschluss werden wir einige Kenndaten auf unserem virtuellen PC ermitteln und in einem ersten Labor-
+Protokoll dokumentieren.
 
 
 == B~~~ Durchführung
