@@ -26,46 +26,90 @@ Vorbereitend für die folgenden Laborübungen wollen wir:
 Im Anschluss werden wir einige Kenndaten auf unserem virtuellen PC ermitteln und in einem ersten Labor-
 Protokoll dokumentieren.
 
-
 == B~~~ Durchführung
+#v(2mm)
+Ihr Übungsprotokoll soll, sofern nicht anders angegeben, in kurzen Stichworten alle notwendigen Schritte zur
+Durchführung der Übung dokumentieren, so dass eine andere Person anhand des Protokolls die gesamte Übung
+problemlos später nachvollziehen kann (die Bewertung erfolgt aufgrund von Korrektheit, Vollständigkeit und
+Form). Ferner sollte das Protokoll Ihre Antworten auf alle gestellten Fragen enthalten.
 
-Ihr Übungsprotokoll soll alle notwendigen Schritte zur Durchführung der Übung dokumentieren, sodass eine andere Person anhand des Protokolls die gesamte Übung problemlos später nachvollziehen kann. Die Bewertung erfolgt aufgrund von Korrektheit, Vollständigkeit und Form. Ferner sollte das Protokoll Ihre Antworten auf alle gestellten Fragen enthalten.
-
-#strong[Wichtig:] Sie dürfen sich bei einem allfälligen Interview auf Ihr Protokoll beziehen (#emph[Sie können also während des Betreuergesprächs auch etwas kurz in Ihrem Protokoll nachlesen].
-
+#strong[Wichtig:] Sie dürfen sich bei einem allfälligen Interview auf Ihr Protokoll beziehen (#emph[Sie können also während des Betreuergesprächs auch etwas kurz in Ihrem Protokoll nachlesen)].
 
 == C~~~ Inbetriebnahme der VM
+#v(2mm)
+Ihr freundlicher Labor-Lehrer wird Ihnen die wichtigsten Schritte auf einem Testsystem vorführen – im wesent-
+lichen ist der Ablauf folgendermaßen:
 
-1. Virtualisierungs-Software (ein sog. Typ-II-Hypervisor) auf dem Host-System starten.
+(1) Virtualisierungs-Software (ein sog. Typ II-Hypervisor) auf dem Host-System “finden” und starten – im Folgenden, falls unter (2) nicht anders angegeben, die Standardvorgaben ausgewählt lassen. 
 
-2. Mit der Virtualisierungs-Software (*VMware Workstation*) eine neue VM erstellen:
-   - *New Virtual Machine → Custom (Advanced)* auswählen, Betriebssystem später installieren.
-   - Betriebssystem: `Microsoft Windows` → `Windows 11 x64`
-   - Name der VM nach Standard: `Windows11_Pro_Edu_Nachname_Vorname_UE01`
-   - Firmware Type: *UEFI*
-   - Hardware-Spezifikationen:
-     - *CPU:* 1 Prozessor / 2 Cores
-     - *RAM:* 4 GiB
-   - *Host-Only* Netzwerkverbindung (keine Internetverbindung für schnellere Installation)
-   - Neue virtuelle Festplatte (40 GiB, nicht vor-alloziert, dynamisch wachsend)
+(2) Mit der Virtualisierungs-Software (bei uns derzeit VMware Workstation) einen passenden virtuellen Computer (VM) bauen, also:
 
-3. Eine Windows-Installations-DVD als *ISO-Image* in das virtuelle CD/DVD-Laufwerk der VM einlegen.
+a) Eine neue VM (New Virtual Machine → Custom (Advanced)) anlegen (das Betriebssystem installierennwir später - I will install operating system later)
+
+b) Als Betriebssystem wählen Sie Microsoft Windows → Windows 11 x64
+
+c) Benennen Sie die VM gleich nach unserem Laborstandard, also etwa
+Windows11_Pro_Edu_Nachname_Vorname_UE01
+
+d) Firmware Type UEFI
+
+e) Die Anzahl der CPUs/Prozessorkerne, Größe des RAMs (Arbeitsspeicher) usw. auswählen., u.a.
+
+~~~~ i. 1 Prozessor/2 Cores
+
+~~~~ ii. RAM = 4 GiB
+
+f) Host-Only Netzwerkverbindung – damit ist die VM über ein privates Netz mit unserem (richtigen) Host-Computer verbunden, kann aber nicht das Internet erreichen – damit werden keine Updates gesucht und die Installation ist wesentlich schneller beendet.
+
+g) Eine neue – leere – virtuelle Festplatte (die im Host-System einfach eine Datei ist) “bauen” und an
+den PC anschließen (wir werden das Betriebssystem erst später – siehe weiter unten – installieren):
+
+~~~~i. Größe: 40 GiB
+
+~~~~ii. Nicht vor-alloziert, sondern dynamisch wachsend (Allocate all disk space now nicht anwählen!)
+
+(3) Eine Windows-Installations-DVD (als “ISO-Image” – das ist eine 1:1-Kopie einer echten DVD, deren Bits
+und Bytes sequentiell – also nacheinander – 1:1 in einer Datei abgespeichert wurden) in das virtuelle
+CD/DVD-Laufwerk der VM “einlegen” – geben Sie in den Einstellungen der VM den absoluten Pfad zum
+ISO-Image im virtuellen DVD-Laufwerk an:
+Pfad-zu-den-Windows-11-ISO-Dateien/de-de_windows_11...x64_dvd.iso
+
+→ Dokumentieren Sie ggf. alle von den Standardvorgaben abweichenden Eingaben und Auswahlen im Protokoll
+(damit Sie bei der nächsten VM schnell loslegen können)!
 
 
 == D~~~ Registry-Hack zur Installation in VMware
+#v(2mm)
+Microsoft setzt für den Betrieb von Windows 11 verhältnismäßig hohe Anforderungen an die Hardware (z.B.
+CPU) voraus, obwohl die Ressourcen für wenig leistungshungrige Programme auch bei älterer Hardware völlig
+ausreichen würden. Zusätzlich benötigt Windows 11 ein aktuelles “Trusted Plattform Module (TPM)”1, welches
+VMware nur mit viel Aufwand bereitstellt. Aus diesem Grund scheitert die Installation von Windows 11 in der
+virtuellen Maschine unseres Labors.
 
-Microsoft setzt hohe Hardwareanforderungen für Windows 11, darunter TPM. Um die Installation in einer VM zu ermöglichen, wird ein Registry-Hack angewendet:
+(4) Wir werden gemeinsam mit der Lehrkraft einen Registry-Hack anwenden, mit dem die Installation von
+Windows 11 trotzdem funktioniert.
 
-1. VM starten und von der DVD booten.
+a) Starten Sie die VM, umd booten Sie von der DVD. Falls Sie in der VM “eingesperrt” sind (Maus
+funktioniert nicht), kommen Sie wieder mit der Tastenkombination Ctrl + Alt heraus.
 
-2. Beim Sprachfenster die Kommandozeile öffnen (`Shift + F10`).
+b) Sobald das Fenster zur Eingabe der Sprachen erscheint, starten Sie mit folgendem Vollprofi-
+Geheimtrick die Kommandozeile: Tastenkombination Shift + F10.
 
-3. *Registrierungseditor* (`regedit`) öffnen und zu `HKEY_LOCAL_MACHINE\SYSTEM\Setup` navigieren.
-4. Neuen Schlüssel `LabConfig` erstellen.
-5. Innerhalb von `LabConfig` folgende `DWORD (32-Bit)`-Werte setzen:
-   - `BypassTPMCheck = 1`
-   - `BypassSecureBoot = 1`
-   - `BypassRAMCheck = 1` (optional)
+c) Öffnen Sie den Registrierungseditor2, indem Sie regedit eingeben.
+
+d) Navigieren Sie nach HKEY_LOCAL_MACHINE\SYSTEM\Setup.
+
+e) Erstellen Sie einen neuen Registry-Key, mit der rechten Maustaste (“RK”) auf Setup klicken und im
+Popup-Fenster auf Neu → Schlüssel und geben als Namen LabConfig ein.
+
+f) In LabConfig erstellen Sie einen DWORD-Wert (32-Bit) mit dem Namen BypassTPMCheck und setzen
+den Wert auf 1.
+
+g) Erstellen Sie einen weiteren DWORD-Wert (32-Bit) in LabConfig und geben diesen den Namen
+BypassSecureBoot und setzen den Wert auf 1.
+
+h) Optional können Sie mit dem DWORD-Value namens BypassRAMCheck einstellen, dass Windows auch
+mit weniger als 4GiB Arbeitsspeicher startet.
 
 
 == E~~~ Windows-Installation
