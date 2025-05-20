@@ -1,4 +1,4 @@
-#import "../template.typ": page_template
+#import "../SYT/BS/resources/BS_Template.typ": page_template
 
 #set page(width: 210mm, height: 297mm, margin: (top: 10mm, bottom: 20mm, left: 15mm, right: 15mm),header-ascent: -18mm,
 

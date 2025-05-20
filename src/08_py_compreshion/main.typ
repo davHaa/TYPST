@@ -1,4 +1,4 @@
-#import "../template.typ": create_page_template
+#import "../SYT/BS/resources/BS_Template.typ": create_page_template
 
 #let filename = "08_py_compreshion"
 
