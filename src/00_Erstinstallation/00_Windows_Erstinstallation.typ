@@ -207,14 +207,24 @@ c) Taktfrequenz
 (14) Disk: Welche Datenträger (uns interessieren die Festplatten) gibt es auf diesem Rechner, wie groß sind sie jeweils (in Gibibyte5 und in Bytes) und wie viel Plattenplatz ist in den einzelnen Partitionen (Teilbereiche) jeweils schon in Verwendung bzw. noch frei (Tipp: Datenträgerverwaltung)?
 
 #table(
-  columns: (auto, auto, auto, auto, auto, auto, auto),
-  inset: 20pt,
-
-  align: horizon,
+  columns: 7,
+  rows: 3,
+  align: center,
+  // Kopfzeile mit zentriertem Text
   table.header(
-    [Volume / Laufwerks-Name], [Dateisystemtyp], [Gesamtgröße in GiB], [Gesamtgröße in Bytes], [Belegt (GiB)], [Frei (Gi)], [Belegt B) (%)]
-  )
+    align(center)[Volume / Laufwerks-Name],
+    align(center)[Dateisystemtyp],
+    align(center)[Gesamtgröße in GiB],
+    align(center)[Gesamtgröße in Bytes],
+    align(center)[Belegt (GiB)],
+    align(center)[Frei (GiB)],
+    align(center)[Belegt (%)]
+  ),
+  [#emph(text(white)[test])], [], [], [], [], [], [], 
+  [#emph(text(white)[test])]
 )
+
+
 
 
 Viel Spaß!
