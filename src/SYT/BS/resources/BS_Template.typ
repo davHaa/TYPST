@@ -1,8 +1,9 @@
 
+#import "@preview/numbly:0.1.0": numbly
 #let sharepoint = "https://htl3r.sharepoint.com/sites/IT-SYT-BS/Freigegebene%20Dokumente"
 #let mainPage = "https://www.htlrennweg.at/"
 #let fach = "SYT/BS"
-#let schoolyear = "2024/25"
+#let schoolyear = "2024/25" 
 
 #let create_page_template(filename) = {
   let uebungsName = filename.split("_").slice(1).join(" ")
@@ -62,3 +63,44 @@
   #show ">>HEUTIGER_DATUMSSTRING<<": it => datetime.today().display("Heute ist [weekday], der [day]. [month]. [year].")
   #doc
 ]
+
+//Nummerierung (1) - a) 
+#let q-counter = counter("count")
+#let count(body) = {
+  set enum(
+    full: true,
+    numbering: numbly("{1:(1)}", "{2:a})"),
+  )
+  q-counter.step()
+  context enum(
+    start: q-counter.get().first(), 
+    body
+  )
+}
+//Nummerierung (1) - a. - i
+#let q-counter = counter("count")
+#let count1(body) = {
+  set enum(
+    full: true,
+    numbering: numbly("{1:(1)}", "{2:a.}", "{3:i}", "{4:1.}"),
+  )
+  q-counter.step()
+  context enum(
+    start: q-counter.get().first(), 
+    body
+  )
+}
+
+//Nummerierung 1. 
+#let q-counter = counter("count2")
+#let count2(body) = {
+  set enum(
+    full: true,
+    numbering: numbly("{1:1.}", "{2:i.}","{3:1.}", "{4:i.}"),
+  )
+  q-counter.step()
+  context enum(
+    start: q-counter.get().first(), 
+    body
+  )
+}

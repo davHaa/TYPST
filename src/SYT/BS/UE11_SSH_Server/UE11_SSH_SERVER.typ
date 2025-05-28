@@ -1,6 +1,7 @@
 #import "../resources/BS_Template.typ": create_page_template
 #import "../resources/BS_Template.typ": template
 #import "@preview/numbly:0.1.0": numbly
+#import "../resources/BS_Template.typ": count; count2; 
 #show: template 
 
 #let filename = "11_SSH_Server";

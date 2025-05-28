@@ -1,21 +1,11 @@
 #import "../resources/BS_Template.typ": create_page_template
 #import "../resources/BS_Template.typ": template
 #import "@preview/numbly:0.1.0": numbly
+#import "../resources/BS_Template.typ": count,count1, count2; 
 #show: template 
 
 #let filename = "01_Windows_MMC";
-#let q-counter = counter("count")
-#let count(body) = {
-  set enum(
-    full: true,
-    numbering: numbly("{1:(1)}", "{2:a})")
-  )
-  q-counter.step()
-  context enum(
-    start: q-counter.get().first(), 
-    body
-  )
-}
+
 
 #set page(
   width: 210mm, 
@@ -46,7 +36,7 @@ virtuellen Maschine auf Ihrem Linux-Host zur Verfügung.
 == B~~~ Inbetriebnahme der VM und Kennenlernen des Windows 11 _User Interfaces_
 #v(2mm)
 Erstellen Sie wenn notwendig eine neue virtuelle Windows 11-Maschine (ein virtueller PC als _Linked Clone_,
-siehe Anleitung) und melden Sie sich mit Admin-Rechten (User/Passwort: *junioradmin*) an!
+siehe Anleitung) und melden Sie sich mit Admin-Rechten (User/Passwort: `junioradmin`) an!
 
 #count[
 Ändern Sie den Namen des Computers auf UE01-_IhrFamilienname-IhrVorname (Tipp: Systemsteuerung →
@@ -78,7 +68,7 @@ Dokumentieren Sie die Schritte, um einen Snapshot zu erstellen!]
 
 == C.1~~~ Allgemeines zu MMC
 #v(2mm)
-#count[
+#count1[
   Beantworten Sie z.B. durch Internet-Recherche die folgenden Fragen zur MMC:
 
   + Wozu dient die MMC? 
@@ -125,7 +115,7 @@ Rufen Sie eine leere MMC-Konsole auf und fügen Sie die folgenden
 
 Fügen Sie ein Screenshot in Ihr Protokoll!
 
-#count[
+#count1[
   Speichern der Konsole: Geben Sie Ihrer Konsole den 
      Namen `Die traumhafte Konsole von IhrVorname IhrFamilienname anno |YYYY|` und speichern Sie Ihre Konsole mit dem 
      Dateinamen `dtk.msc` (unter dem vorgeschlagenen Standardpfad) ab!
@@ -137,55 +127,51 @@ Fügen Sie ein Screenshot in Ihr Protokoll!
 
 == C.3~~~ MMC Snap-Ins
 #v(2mm)
-+  Erkunden Sie die einzelnen Snap-Ins:
+#count1[
+Erkunden Sie die einzelnen Snap-Ins:
      
-     + _Geräte-Manager:_
+         + _Geräte-Manager:_
 
-        i.  Wie kann man den Netzwerkzugriff über einen bestimmten
+          + Wie kann man den Netzwerkzugriff über einen bestimmten
             Netzwerkadapter gänzlich unterbinden (ohne ihn ganz zu
             entfernen/deinstallieren)? 
 
-        ii. Probieren Sie das aus -- wie testen Sie das?
+          + Probieren Sie das aus -- wie testen Sie das?
 
      +  _Freigaben:_
-    
+
         Man kann einzelne Ordner anderen Computern im Netzwerk über
         sogenannte _Freigaben_ verfügbar machen -- Benutzer von anderen
         Computern können dann auf diese Ordner über ein sogenanntes
         _Netzwerklaufwerk_ zugreifen, sofern sie die nötigen Freigabe
         und Dateisystem-(NTFS)-Rechte haben.
-        i.  Was kann man mit Hilfe des Snap-ins "Freigegebene Ordner” so
+        + Was kann man mit Hilfe des Snap-ins "Freigegebene Ordner” so
             alles machen (zum Beispiel ansehen)?
-        i.  _(Daraus:)_ Welche Ordner werden automatisch (aber nur für
+
+        +  _(Daraus:)_ Welche Ordner werden automatisch (aber nur für
             Administratoren) im Netzwerk freigegeben? 
             _Zum Nachdenken:_ Ist das ein Sicherheitsproblem?
 
     +  _Dienste:_
-    
-        Dienste (_Services_) sind Programme, die vom Betriebssystem
-        meist automatisch gestartet werden und "im Hintergrund werken", 
-	  d.h. normalerweise nicht mit dem Benutzer interagieren:
-        
-        1.  Welche vier Einstellungen zum Starttyp kann man zu den
-            einzelnen Diensten (_Service_) im Snap-in _Dienste_
-            vornehmen?
-        2.  Starten Sie den Drucker-Spooler (`Druckwarteschlange`) neu! 
-            i. Wie haben Sie das gemacht?
-            ii. Wann/Warum wird man das in der Praxis evtl. machen?
-        3.  Verhindern Sie, dass Windows-Media-Player in der Lage ist,
-            über das Netzwerk Audio/Video-Dateien an
-            _Universal-Plug-and-Play-(UPnP)_-Media-Streaming-Geräte (wie z.B. die Xbox)
-            weiterzugeben!
-		    4.  _Bonusaufgabe für Sicherheitsbewusste_: Schalten Sie die           Windows-Telemetrie-Dienst (Benutzererfahrungen und Telemetrie im verbundenen Modus) dauerhaft ab!
 
+      Dienste (_Services_) sind Programme, die vom Betriebssystem meist automatisch gestartet werden und "im Hintergrund werken", d.h. normalerweise nicht mit dem Benutzer interagieren:
+      + Welche vier Einstellungen zum Starttyp kann man zu den einzelnen Diensten(_Service_) im Snap-in _Dienste_ vornehmen?
+
+      + Starten Sie den Drucker-Spooler (`Druckwarteschlange`) neu! 
+            + Wie haben Sie das gemacht?
+            + Wann/Warum wird man das in der Praxis evtl. machen?
+      +   Verhindern Sie, dass Windows-Media-Player in der Lage ist,
+            über das Netzwerk Audio/Video-Dateien an _Universal-Plug-and-Play-(UPnP)_-Media-Streaming-Geräte (wie z.B. die Xbox) weiterzugeben!
+      +   _Bonusaufgabe für Sicherheitsbewusste_: Schalten Sie die           Windows-Telemetrie-Dienst (Benutzererfahrungen und Telemetrie im verbundenen Modus) dauerhaft ab!
     +  _Leistung:_
     
         Starten Sie den _Ressourcen-Monitor_ aus dem
         Leistungs-Snap-In! Wie vergleicht sich der Informationsgehalt
         mit dem (Ihnen vermutlich bekannten) _Task Manager_?
+]
+#count[
 
-
-+   Schnellzugriff auf Snap-Ins: 
+   Schnellzugriff auf Snap-Ins: 
 
     Mit welchem tatsächlichen Namen kann man die
     folgenden Snap-Ins (mitsamt einer MMC-Instanz) *direkt* ausführen 
@@ -204,6 +190,7 @@ Fügen Sie ein Screenshot in Ihr Protokoll!
       Lokale Benutzer und Gruppen → ...
     
       Lokale Sicherheitsrichtlinie → ...
+]
 
 
 == D~~~ Systemüberwachung und Protokolle
@@ -224,13 +211,10 @@ Windows stuft nämlich viele harmlose Ereignisse als Fehler oder Warnung ein.
 Um nicht die "Nadel im Heuhaufen" suchen zu müssen, sollten Sie daher die Log-Einträge gezielt durchforsten.
 
 == D.1~~~ Benutzerdefinierte Ansicht der Ereignisanzeige
-#set enum( //Nummerierung 
-  full: true,
-  start: 10,
-  numbering: numbly("{1:(1)}", "{2:a})"),
-)
 
-+ Es gibt zahlreiche Ereignisprotokolle -- mit einer
+#count[
+
+ Es gibt zahlreiche Ereignisprotokolle -- mit einer
     _Benutzerdefinierten Ansicht_ können Sie Log-Einträge aus den
     verschiedenen Quellen kombinieren, nur bestimmte Ereignisse
     betrachten und filtern:
@@ -238,62 +222,61 @@ Um nicht die "Nadel im Heuhaufen" suchen zu müssen, sollten Sie daher die Log-E
     Legen Sie eine benutzerdefinierte Ansicht "Wichtige Sachen von IhrName |YYYY|" an, die kritische/wichtige
     Fehler sowie Warnungen aus den Logs (Windows-Protokollen) für "Anwendungen", "System",
     "Sicherheit" sowie "Hardware-Ereignisse" zusammenfasst.
-
-+ Wählen Sie eines der nun angezeigten Ereignisse aus und
+]
+#count[
+ Wählen Sie eines der nun angezeigten Ereignisse aus und
     dokumentieren Sie exemplarisch den Fehler/die Warnung. Verwenden Sie
     zur besseren Klärung des Ereignisses evtl. auch die Informationsseite
     #link("http://www.eventid.net/")[www.eventid.net].
 	Kopieren Sie einen Screenshot des Ereignisses in Ihr Protokoll.
-
-+ Leeren (= Löschen der Einträge) Sie die Protokolle _(Logs)_ "Anwendung",
+]
+#count[
+Leeren (= Löschen der Einträge) Sie die Protokolle _(Logs)_ "Anwendung",
     "Sicherheit" und "System" als Vorbereitung für unseren
     Bonus-Übungspunkt.
-
-+ Welche Auswahl haben Sie, wenn Sie die Ereignisse löschen?
+]
+#count[
+ Welche Auswahl haben Sie, wenn Sie die Ereignisse löschen?
+]
 
 == D.2~~~ Bonus: Lokale Sicherheitsrichtlinie und Sicherheitsprotokollierung
-#set enum( //Nummerierung 
-  full: true,
-  start: 14,
-  numbering: numbly("{1:(1)}", "{2:a})"),
-)
 
-+  Öffnen Sie aus der Systemsteuerung unter "Verwaltung” das _Snap-In_
+#count1[
+Öffnen Sie aus der Systemsteuerung unter "Verwaltung” das _Snap-In_
     "Lokale Sicherheitsrichtlinie".
 
-    a. Wie heißt eigentlich die `.msc`-Datei? 
+    + Wie heißt eigentlich die `.msc`-Datei?                     
+      _Tipp:_ Das haben Sie vorhin bereits ermittelt! ;-)
 
-        _Tipp:_ Das haben Sie vorhin bereits ermittelt! ;-)
+    +  Aktivieren Sie die Überwachungsrichtlinie für
 
-    b.  Aktivieren Sie die Überwachungsrichtlinie für
-
-        i.  Anmeldeereignisse (erfolgreich und fehlgeschlagen),
-        i.  Anmeldeversuche (fehlgeschlagen) und
-        i.  Kontenverwaltung (erfolgreich).
+      +  Anmeldeereignisse (erfolgreich und fehlgeschlagen),
+      +  Anmeldeversuche (fehlgeschlagen) und
+      +  Kontenverwaltung (erfolgreich).
 
     c.  Schließen Sie diese Konsole und wechseln Sie zu Ihrer MMC.
+]
+#count1[
+Anlegen von Benutzerkonten:
 
-
-+ Anlegen von Benutzerkonten:
-
-    a.  Erzeugen Sie ein neues Benutzerkonto für sich. Verwenden Sie als Kontonamen Ihren Vornamen
+    + Erzeugen Sie ein neues Benutzerkonto für sich. Verwenden Sie als Kontonamen Ihren Vornamen
         (klein geschrieben). Das Kennwort soll zunächst gleichlautend
         mit dem Kontonamen sein. Aktivieren Sie aber die Option
         "Benutzer muss Kennwort bei der nächsten Anmeldung ändern".
 
-    b.  Schließen Sie alle Fenster, melden Sie sich ab, dann mit Ihrem
+    + Schließen Sie alle Fenster, melden Sie sich ab, dann mit Ihrem
         neu erstellten Benutzer an _(Sie sollten Ihr Passwort ändern müssen)_.
 
-    c.  Melden Sie sich anschließend wieder als `junioradmin` an.
+    + Melden Sie sich anschließend wieder als `junioradmin` an.
         Öffnen Sie Ihre MMC und kontrollieren Sie die Protokollierungen, indem Sie 
         Einträge finden für ...
 
-        i.  die Erstellung des neuen Kontos,
-        ii.  die Passwortänderung,
-        iii.  den Login durch den neuen Benutzer!
-
+        +  die Erstellung des neuen Kontos,
+        +  die Passwortänderung,
+        +  den Login durch den neuen Benutzer!
+]
 _(Tipp: Suchen Sie im Sicherheitsprotokoll z.B. nach `ändern`, `erstellt` usw.)_. 
           
-→ Kopieren Sie die wesentlichen Infos (nach Ihrer
-Einschätzung) aus den Ereignisprotokolleinträgen in Ihr
-Laborprotokoll! 
+→ Kopieren Sie die wesentlichen Infos (nach Ihrer Einschätzung) aus den Ereignisprotokolleinträgen in Ihr Laborprotokoll! 
+
+_Viel Spaß!_
