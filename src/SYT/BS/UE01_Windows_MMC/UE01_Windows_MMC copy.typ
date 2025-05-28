@@ -1,7 +1,21 @@
 #import "../resources/BS_Template.typ": create_page_template
+#import "../resources/BS_Template.typ": template
 #import "@preview/numbly:0.1.0": numbly
+#show: template 
 
 #let filename = "01_Windows_MMC";
+#let q-counter = counter("count")
+#let count(body) = {
+  set enum(
+    full: true,
+    numbering: numbly("{1:(1)}", "{2:a})")
+  )
+  q-counter.step()
+  context enum(
+    start: q-counter.get().first(), 
+    body
+  )
+}
 
 #set page(
   width: 210mm, 
@@ -15,51 +29,271 @@
 == A~~~ Admin-Toolbox
 #v(2mm)
 Als Systemadmin möchte man alle wichtigen Werkzeuge zur Systemverwaltung gerne an einer Stelle haben. Man
-kann unter Windows mit der #emph[Microsoft Management Console], ähnlich einem Baukastensystem, sein eigenes Kon-
+kann unter Windows mit der _Microsoft Management Console_, ähnlich einem Baukastensystem, sein eigenes Kon-
 figurationstool bauen (die MMC-Technologie wird nämlich von zahlreichen Microsoft-Verwaltungswerkzeugen
 verwendet).
 
 In dieser Übung stellen Sie sich Ihre eigene “Admin-Toolbox” für Windows 11 (das funktioniert seit vielen
 Windows Versionen, dh. auch unter Windows 10), erkunden eine Reihe nützlicher Werkzeuge und lernen, wie
-man wichtige Meldungen des Systems in der Ereignisanzeige (Systemprotokoll – #emph[Event Log]) nachlesen kann.
+man wichtige Meldungen des Systems in der Ereignisanzeige (Systemprotokoll – _Event Log_) nachlesen kann.
 Bitte beantworten Sie alle Fragen und schreiben Sie alle relevanten Schritte in Ihr Protokoll und fügen Sie ggf.
 Screenshotsein!
 
-#emph[Tipp]: Mit dem Windows-#emph[Snipping-Tool] können Sie sehr einfach einen Bildschirm-Ausschnitt “abfotografieren”.
-Dieser #emph[Screenshot] wird automatisch in der Zwischenablage gespeichert und steht sofort auch außerhalb der
+_Tipp_: Mit dem Windows-_Snipping-Tool_ können Sie sehr einfach einen Bildschirm-Ausschnitt “abfotografieren”.
+Dieser _Screenshot_ wird automatisch in der Zwischenablage gespeichert und steht sofort auch außerhalb der
 virtuellen Maschine auf Ihrem Linux-Host zur Verfügung.
 
-== B~~~ Inbetriebnahme der VM und Kennenlernen des Windows 11 #emph[User Interfaces]
+== B~~~ Inbetriebnahme der VM und Kennenlernen des Windows 11 _User Interfaces_
 #v(2mm)
-Erstellen Sie wenn notwendig eine neue virtuelle Windows 11-Maschine (ein virtueller PC als #emph[Linked Clone],
-siehe Anleitung) und melden Sie sich mit Admin-Rechten (User/Passwort: #strong[junioradmin]) an!
+Erstellen Sie wenn notwendig eine neue virtuelle Windows 11-Maschine (ein virtueller PC als _Linked Clone_,
+siehe Anleitung) und melden Sie sich mit Admin-Rechten (User/Passwort: *junioradmin*) an!
 
-#set enum( //Nummerierung 
-  full:true, 
-  numbering: numbly("{1:(1)}", "{2:a})","{1:(5)}" )
-)
-+ Ändern Sie den Namen des Computers auf UE01-#emph[IhrFamilienname-IhrVorname (Tipp: Systemsteuerung →
-Kleine Symbole → System → Erweiterte Systemeinstellungen] oder schneller: Tastenkombination #strong[Windows+ Pause])! Wie lautete der Standardname? Was ist notwendig, damit die Änderung des Computernamens tatsächlich durchgeführt wird? Dokumentieren Sie hier anhand eines Screenshots, dass Ihr Rechner erfolgreich umbenannt wurde!
+#count[
+Ändern Sie den Namen des Computers auf UE01-_IhrFamilienname-IhrVorname (Tipp: Systemsteuerung →
+Kleine Symbole → System → Erweiterte Systemeinstellungen_ oder schneller: Tastenkombination `Windows+ Pause)`! Wie lautete der Standardname? Was ist notwendig, damit die Änderung des Computernamens tatsächlich durchgeführt wird? Dokumentieren Sie hier anhand eines Screenshots#footnote[Im Linux Desktop können Sie mit der Tastenkombination `STRG + Shift + Druck` einen rechteckigen Bildschirmbereich in die Zwischenablage kopieren!], dass Ihr Rechner erfolgreich umbenannt wurde!
+]
+#count[Jetzt ist ein guter Zeitpunkt um einen _Snapshot_ zu erstellen. VMware speichert den Zustand der virtuellen Maschine (Festplatte und Einstellungen), man kann jederzeit zu diesem Zustand _zurückkehren_. Machen Sie den Snapshot mit dem Namen “init” am besten bei heruntergefahrener VM!
 
-+ Jetzt ist ein guter Zeitpunkt um einen #emph[Snapshot] zu erstellen. VMware speichert den Zustand der virtuellen Maschine (Festplatte und Einstellungen), man kann jederzeit zu diesem Zustand #emph[zurückkehren]. Machen Sie den Snapshot mit dem Namen “init” am besten bei heruntergefahrener VM! Dokumentieren Sie die Schritte, um einen Snapshot zu erstellen!
+Dokumentieren Sie die Schritte, um einen Snapshot zu erstellen!]
 
-+ Machen Sie sich mit dem Windows 11 #emph[User Interface] vertraut. Dokumentieren und merken Sie sich, wie man folgende Werkzeuge möglichst #emph[schnell] aufrufen kann! (#emph[Tipp]: Nutzen Sie das Handout über Windows-Tastenkombinationen!)
+#count[
+  Machen Sie sich mit dem Windows 11 _User Interface_ vertraut. Dokumentieren und merken Sie sich, wie man folgende Werkzeuge möglichst _schnell_ aufrufen kann! (_Tipp_: Nutzen Sie das Handout über Windows-Tastenkombinationen!)
 
-  + Erweitertes Kontextmenü (Quicklink zu den wichtigsten
-  + Verwaltungswerkzeugen im Desktop)
+  + Erweitertes Kontextmenü (_Quicklink_ zu den wichtigsten Verwaltungswerkzeugen im _Desktop_)
   + Explorer -Fenster öffnen Hauptfenster
   + Einstellungen (Modern UI Style)
   + Systemsteuerung (klassisch)
   + Task-Manager
-  + Systemeigenschaften (Info-Feld “System”)
+  + Systemeigenschaften (_Info-Feld “System”_)
   + Geräte-Manager
-  + Terminal = Kommandozeile: ist seit Windows 10 1703 (Creators + Update) nicht mehr CMD sondern die Powershell
+  + Terminal = Kommandozeile: ist seit Windows 10 1703 (Creators + Update) nicht mehr CMD sondern die _Powershell_
   + Snipping-Tool, um einen Screenshot in die Zwischenablage zu kopieren
-  + Bonus: Fügen Sie 2 virtuelle Desktops hinzu, starten Sie im ersten der neuen virtuellen Desktops den Taschenrechner calc.exe und im anderen den Task-Manager. Wozu sind virtuelle Desktops nützlich?
+  + Bonus: Fügen Sie 2 virtuelle Desktops hinzu, starten Sie im ersten der neuen virtuellen Desktops den Taschenrechner `calc.exe` und im anderen den Task-Manager. Wozu sind virtuelle Desktops nützlich?
+]
+#count[
+  Welche Windows-Version (mit genauer _Build-Nummer_) haben Sie installiert? Mit welchem Programm (das Sie mit Windows-R starten können) haben Sie das ermittelt?
+]
 
+= C~~~ Microsoft Management Console 
 
+== C.1~~~ Allgemeines zu MMC
+#v(2mm)
+#count[
+  Beantworten Sie z.B. durch Internet-Recherche die folgenden Fragen zur MMC:
 
-+ Welche Windows-Version (mit genauer Build-Nummer) haben Sie installiert? Mit welchem Programm (das
-Sie mit Windows-R starten können) haben Sie das ermittelt?
+  + Wozu dient die MMC? 
+  + Was ist ein _Snap-in_?
+  + Nennen Sie zwei Beispiele vorgefertigter System-Tools, welche die MMC nutzen!
+
+]
  
+== C.2~~~ Anlegen einer eigenen MMC
+#v(2mm)
+#count[
+ 
+Rufen Sie eine leere MMC-Konsole auf und fügen Sie die folgenden
+    Snap-Ins (bzw. "Ordner") hinzu (alle für den lokalen Computer), 
+    damit folgende Baumstruktur entsteht (lesen ):
+]
 
+
+  *Achtung*: Die Untergruppen von "Ereignisanzeige" sind als Teil des Snap-Ins bereits vordefiniert, also vorhanden! Die "Ordner" ``` Hardware hrFamilienname_System ``` und `NetzwerkYY` müssen Sie aber selbst anlegen!
+
+  *Tipp*: Wo notwendig, erst den Ordner mit dem vorläufigen Namen `Ordner` hinzufügen, dann  den Ordner entsprechend umbenennen, etwa `Hardware`, `IhrFamilienname_System` ... Sodann fügen Sie das gewünschte Snap-In dem Ordner hinzu, indem Sie als `Übergeordnetes Snap-In` den Ordnernamen (_nicht_ `Konsolenstamm`) angeben!
+
+  ```
+
+     - Konsolenstamm 
+       - Ereignisanzeige 
+          |- Benutzerdefinierte Ansichten
+          |- Windows-Protokolle
+          |- Anwendungs- und Dienstprotokolle
+          |- Abonnements
+       - Hardware
+          |- Geräte-Manager
+          |- Datenträgerverwaltung 
+       - IhrFamilienname_System
+          |- Lokale Benutzer und Gruppen
+          |- Freigegebene Ordner
+          |- Dienste
+          |- Leistung(-süberwachung)
+       - Netzwerk__YY__
+          |- Windows Defender Firewall mit erweiterter Sicherheit
+
+
+```
+
+Fügen Sie ein Screenshot in Ihr Protokoll!
+
+#count[
+  Speichern der Konsole: Geben Sie Ihrer Konsole den 
+     Namen `Die traumhafte Konsole von IhrVorname IhrFamilienname anno |YYYY|` und speichern Sie Ihre Konsole mit dem 
+     Dateinamen `dtk.msc` (unter dem vorgeschlagenen Standardpfad) ab!
+
+     + _Wo_ ist die Datei `dtk.msc` im Dateisystem abgelegt? _(Absoluter Pfad gesucht, also_ `C:\Users\...\dtk.msc`_- Tipp : Speichern unter → Eigenschaften → Ort)_
+
+     + Wie können Sie diese angepasste Konsole also wieder aufrufen _(zum Testen vorher alle Fenster schließen)_?]
+
+
+== C.3~~~ MMC Snap-Ins
+#v(2mm)
++  Erkunden Sie die einzelnen Snap-Ins:
+     
+     + _Geräte-Manager:_
+
+        i.  Wie kann man den Netzwerkzugriff über einen bestimmten
+            Netzwerkadapter gänzlich unterbinden (ohne ihn ganz zu
+            entfernen/deinstallieren)? 
+
+        ii. Probieren Sie das aus -- wie testen Sie das?
+
+     +  _Freigaben:_
+    
+        Man kann einzelne Ordner anderen Computern im Netzwerk über
+        sogenannte _Freigaben_ verfügbar machen -- Benutzer von anderen
+        Computern können dann auf diese Ordner über ein sogenanntes
+        _Netzwerklaufwerk_ zugreifen, sofern sie die nötigen Freigabe
+        und Dateisystem-(NTFS)-Rechte haben.
+        i.  Was kann man mit Hilfe des Snap-ins "Freigegebene Ordner” so
+            alles machen (zum Beispiel ansehen)?
+        i.  _(Daraus:)_ Welche Ordner werden automatisch (aber nur für
+            Administratoren) im Netzwerk freigegeben? 
+            _Zum Nachdenken:_ Ist das ein Sicherheitsproblem?
+
+    +  _Dienste:_
+    
+        Dienste (_Services_) sind Programme, die vom Betriebssystem
+        meist automatisch gestartet werden und "im Hintergrund werken", 
+	  d.h. normalerweise nicht mit dem Benutzer interagieren:
+        
+        1.  Welche vier Einstellungen zum Starttyp kann man zu den
+            einzelnen Diensten (_Service_) im Snap-in _Dienste_
+            vornehmen?
+        2.  Starten Sie den Drucker-Spooler (`Druckwarteschlange`) neu! 
+            i. Wie haben Sie das gemacht?
+            ii. Wann/Warum wird man das in der Praxis evtl. machen?
+        3.  Verhindern Sie, dass Windows-Media-Player in der Lage ist,
+            über das Netzwerk Audio/Video-Dateien an
+            _Universal-Plug-and-Play-(UPnP)_-Media-Streaming-Geräte (wie z.B. die Xbox)
+            weiterzugeben!
+		    4.  _Bonusaufgabe für Sicherheitsbewusste_: Schalten Sie die           Windows-Telemetrie-Dienst (Benutzererfahrungen und Telemetrie im verbundenen Modus) dauerhaft ab!
+
+    +  _Leistung:_
+    
+        Starten Sie den _Ressourcen-Monitor_ aus dem
+        Leistungs-Snap-In! Wie vergleicht sich der Informationsgehalt
+        mit dem (Ihnen vermutlich bekannten) _Task Manager_?
+
+
++   Schnellzugriff auf Snap-Ins: 
+
+    Mit welchem tatsächlichen Namen kann man die
+    folgenden Snap-Ins (mitsamt einer MMC-Instanz) *direkt* ausführen 
+	  (mit der Tastenkombination `Windows + R` )?
+
+    _Tipp_: Suchen Sie Dateien namens `*.msc` unter
+    `C:\Windows\System32` mit der Explorer-Suchfunktion!
+
+    
+    Beispiel: Ereignisanzeige → `eventvwr.msc` _(Testen!)_
+
+      Geräte-Manager → ...
+    
+      Datenträgerverwaltung → ...
+    
+      Lokale Benutzer und Gruppen → ...
+    
+      Lokale Sicherheitsrichtlinie → ...
+
+
+== D~~~ Systemüberwachung und Protokolle
+#v(2mm)
+
+In diesem Teil der Übung werden Sie sich mit der Verwendung des
+MMC-_Snap-In Ereignisanzeige (Event Log)_ zur Fehlererkennung und
+Systemüberwachung auseinandersetzen -- ein mächtiges Werkzeug, um
+Fehlfunktionen und Störungen des Windows-Computers auf die Schliche zu
+kommen!
+
+In der Ereignisanzeige protokolliert Windows alles, was es für erwähnenswert hält.
+Dazu gehören nicht nur schwere Systemfehler, Probleme bei fehlerhaft konfigurierter Hardware,
+Ereignisse wie z.B. Updates oder jeden Start von Windows.
+Selbst wenn Windows völlig einwandfrei konfiguriert wurde, werden in der Ereignisanzeige
+zahlreiche Einträge über Warnungen und Fehler protokolliert.
+Windows stuft nämlich viele harmlose Ereignisse als Fehler oder Warnung ein.
+Um nicht die "Nadel im Heuhaufen" suchen zu müssen, sollten Sie daher die Log-Einträge gezielt durchforsten.
+
+== D.1~~~ Benutzerdefinierte Ansicht der Ereignisanzeige
+#set enum( //Nummerierung 
+  full: true,
+  start: 10,
+  numbering: numbly("{1:(1)}", "{2:a})"),
+)
+
++ Es gibt zahlreiche Ereignisprotokolle -- mit einer
+    _Benutzerdefinierten Ansicht_ können Sie Log-Einträge aus den
+    verschiedenen Quellen kombinieren, nur bestimmte Ereignisse
+    betrachten und filtern:
+
+    Legen Sie eine benutzerdefinierte Ansicht "Wichtige Sachen von IhrName |YYYY|" an, die kritische/wichtige
+    Fehler sowie Warnungen aus den Logs (Windows-Protokollen) für "Anwendungen", "System",
+    "Sicherheit" sowie "Hardware-Ereignisse" zusammenfasst.
+
++ Wählen Sie eines der nun angezeigten Ereignisse aus und
+    dokumentieren Sie exemplarisch den Fehler/die Warnung. Verwenden Sie
+    zur besseren Klärung des Ereignisses evtl. auch die Informationsseite
+    #link("http://www.eventid.net/")[www.eventid.net].
+	Kopieren Sie einen Screenshot des Ereignisses in Ihr Protokoll.
+
++ Leeren (= Löschen der Einträge) Sie die Protokolle _(Logs)_ "Anwendung",
+    "Sicherheit" und "System" als Vorbereitung für unseren
+    Bonus-Übungspunkt.
+
++ Welche Auswahl haben Sie, wenn Sie die Ereignisse löschen?
+
+== D.2~~~ Bonus: Lokale Sicherheitsrichtlinie und Sicherheitsprotokollierung
+#set enum( //Nummerierung 
+  full: true,
+  start: 14,
+  numbering: numbly("{1:(1)}", "{2:a})"),
+)
+
++  Öffnen Sie aus der Systemsteuerung unter "Verwaltung” das _Snap-In_
+    "Lokale Sicherheitsrichtlinie".
+
+    a. Wie heißt eigentlich die `.msc`-Datei? 
+
+        _Tipp:_ Das haben Sie vorhin bereits ermittelt! ;-)
+
+    b.  Aktivieren Sie die Überwachungsrichtlinie für
+
+        i.  Anmeldeereignisse (erfolgreich und fehlgeschlagen),
+        i.  Anmeldeversuche (fehlgeschlagen) und
+        i.  Kontenverwaltung (erfolgreich).
+
+    c.  Schließen Sie diese Konsole und wechseln Sie zu Ihrer MMC.
+
+
++ Anlegen von Benutzerkonten:
+
+    a.  Erzeugen Sie ein neues Benutzerkonto für sich. Verwenden Sie als Kontonamen Ihren Vornamen
+        (klein geschrieben). Das Kennwort soll zunächst gleichlautend
+        mit dem Kontonamen sein. Aktivieren Sie aber die Option
+        "Benutzer muss Kennwort bei der nächsten Anmeldung ändern".
+
+    b.  Schließen Sie alle Fenster, melden Sie sich ab, dann mit Ihrem
+        neu erstellten Benutzer an _(Sie sollten Ihr Passwort ändern müssen)_.
+
+    c.  Melden Sie sich anschließend wieder als `junioradmin` an.
+        Öffnen Sie Ihre MMC und kontrollieren Sie die Protokollierungen, indem Sie 
+        Einträge finden für ...
+
+        i.  die Erstellung des neuen Kontos,
+        ii.  die Passwortänderung,
+        iii.  den Login durch den neuen Benutzer!
+
+_(Tipp: Suchen Sie im Sicherheitsprotokoll z.B. nach `ändern`, `erstellt` usw.)_. 
+          
+→ Kopieren Sie die wesentlichen Infos (nach Ihrer
+Einschätzung) aus den Ereignisprotokolleinträgen in Ihr
+Laborprotokoll! 
