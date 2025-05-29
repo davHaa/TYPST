@@ -69,6 +69,11 @@
   #doc
 ]
 
+ #let my_box(title, body) = {
+    box(stroke: 1pt, outset: 4pt, title)
+}
+
+
 
 //Nummerierung (1) - a) 
 #let q-counter = counter("count")
