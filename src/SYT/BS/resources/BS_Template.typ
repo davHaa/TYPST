@@ -52,6 +52,7 @@
   #show "XXXX": [Setzen Sie hier Ihre Eduvidual-Kennung ein. z.B. `1234`]
   #show "|YYYY|": it => datetime.today().display("[year]")
   #show "YY": it => datetime.today().display("[year repr:last_two]")
+  #show "__YY__": it => datetime.today().display("[year repr:last_two]")
   #show "|LastYYYY|": it => (datetime.today() - duration(days: 366)).display("[year]")
   #show "LastYY": it => (datetime.today() - duration(days: 366)).display("[year repr:last_two]")
   #show "|NextYYYY|": it => (datetime.today() + duration(days: 366)).display("[year]")
@@ -60,9 +61,14 @@
   #show ">>SHOW_TEACHER<<": [Fügen Sie einen Screenshot in Ihr Protokoll ein und zeigen Sie Ihrem Lehrer, dass Sie diesen Punkt gelöst haben!]
   #show ">>SSMOODLE<<": [Fügen Sie einen Screenshot in Ihr Protokoll ein und laden Sie diesen in Eduvidual hoch!]
   #show ">>SSPROTOKOLL<<": [Fügen Sie einen Screenshot in Ihr Protokoll ein!]
+  #show "SSMOODLE": [Fügen Sie einen Screenshot in Ihr Protokoll ein und laden Sie diesen in Eduvidual hoch!]
+  #show "__JUCHHEISSA__": [Hurra, gefunden!]
+  #show "__NEUEDATEI__": [Datei99]
+  #show "__ZEFIX__": [Oje, IHR VORNAME hat nichts gefunden!]
   #show ">>HEUTIGER_DATUMSSTRING<<": it => datetime.today().display("Heute ist [weekday], der [day]. [month]. [year].")
   #doc
 ]
+
 
 //Nummerierung (1) - a) 
 #let q-counter = counter("count")
@@ -105,7 +111,7 @@
   )
 }
 
-//Nummerierung a) 
+//Nummerierung a.) 
 #let q-counter = counter("count4")
 #let count4(body) = {
   set enum(
@@ -119,7 +125,7 @@
   )
 }
 
-//Nummerierung (1) - a) 
+//Nummerierung (1) - (a) 
 #let q-counter = counter("count")
 #let count5(body) = {
   set enum(
@@ -132,3 +138,18 @@
     body
   )
 }
+
+//Nummerierung (1) - a.
+#let q-counter = counter("count")
+#let count6(body) = {
+  set enum(
+    full: true,
+    numbering: numbly("{1:(1)}", "{2:a.}"),
+  )
+  q-counter.step()
+  context enum(
+    start: q-counter.get().first(), 
+    body
+  )
+}
+
