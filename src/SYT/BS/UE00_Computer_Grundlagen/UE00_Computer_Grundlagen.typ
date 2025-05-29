@@ -4,7 +4,7 @@
 #import "../resources/BS_Template.typ": count,count1, count2, count4; 
 #show: template 
 
-#let filename = "UE00_Computer_Grundlagen";
+#let filename = "00_Computer_Grundlagen";
 
 
 #set page(
