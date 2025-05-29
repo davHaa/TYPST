@@ -1,6 +1,7 @@
 #import "../resources/BS_Template.typ": create_page_template
 #import "../resources/BS_Template.typ": template
 #import "@preview/numbly:0.1.0": numbly
+#import "../resources/BS_Template.typ": count, count1, count2; 
 #show: template 
 
 #let filename = "05_Windows_Kommandozeile";
@@ -18,74 +19,55 @@
 #v(2mm)
 Bevor Sie sich als Systemadministrator gekonnt auf der klassischen
 Windows-Befehlszeile bewegen, müssen Sie sich erst einmal einige
-Grundlagen aneignen. Diese werden wir uns in dieser Übung erarbeiten!
+Grundlagen aneignen. 
+Diese werden wir uns in dieser Übung erarbeiten!
 Die wesentlich moderne Windows-*Powershell* (als Nachfolger von
 `cmd.exe`) schauen wir uns etwas später an.
 
 == B~~~ Inbetriebnahme der VM und Vorüberlegungen
 #v(2mm)
-#set enum( //Nummerierung 
-  full:true, 
-  numbering: numbly("{1:(1)}", "{2:a})")
-)
 
 Für diese Übung verwenden Sie Ihre gewohnte Windows 11 VM _(Linked Clone)_.
 Sie können die Übung auch nativ auf Ihrem Rechner ausführen, falls Sie Windows 10 oder neuer benutzen.
 Beantworten Sie alle gestellten Fragen und dokumentieren Sie sämtliche Befehle
 sowie die Befehlsausgaben!
 
-+ Nennen Sie drei Gründe, warum man mit der Kommandozeile arbeitet!
-
+#count[
+ Nennen Sie drei Gründe, warum man mit der Kommandozeile arbeitet!
+]
 
 == C~~~ Einführung in die Windows Command Line (`cmd`)
 == C.1~~~ Der Befehl `help`
 #v(2mm)
-#set enum( //Nummerierung 
-  full:true, 
-  start: 2,
-  numbering: numbly("{1:(1)}", "{2:a})")
-)
 
-+ Sie können auf der Kommandozeile für viele einfache Befehle auch mit
-    `help Befehlsname` Hilfe zur Verwendung des jeweiligen
-    Befehls erhalten.
-
+#count[
+ Sie können auf der Kommandozeile für viele einfache Befehle auch mit `help Befehlsname` Hilfe zur Verwendung des jeweiligen Befehls erhalten.
     → Was macht etwa der Befehl `prompt`?  _Tipp:_ `help prompt`
-
-+ Überprüfen Sie Ihre Erkenntnis z.B. mit dieser Befehlszeile:
+]
+#count[
+Überprüfen Sie Ihre Erkenntnis z.B. mit dieser Befehlszeile:
 
         `prompt Dein Wunsch ist mir Befehl!`
 
     _Tipp:_ Die Original-Eingabeaufforderung erhalten Sie zurück mit `prompt $p$g`!
- 
+]
 == C.2~~~ Eingebaute Befehls-Hilfe
 #v(2mm)
 Die meisten Befehle der Kommandozeile geben auch selbst bereitwillig Auskunft
 über ihre Verwendung, indem man die Option `/?` (und sonst nichts)
 an den Befehl anhängt – verwenden Sie das für die folgenden Fragen:
 
-#set enum( //Nummerierung 
-  full: true,
-  start: 4,
-  numbering: numbly("{1:(1)}", "{2:1}"),
-)
-
-+ Was macht der Befehl `dir` ? (*Tipp*: `dir /?`)
-+ Der Befehl `dir` kann auch nur Dateien und Ordner mit
-    bestimmten (angegebenen) Attributen auflisten:
-    1.  Mit welcher Option?
-    2.  Welche Attribute gibt es da überhaupt?
-    3.  Mit diesem Wissen: Wie kann man konkret die versteckten Dateien
-        und Ordner im Stammverzeichnis (`\`)
-        des Laufwerks `C:` auflisten?
-
+#count[
+    Was macht der Befehl `dir` ? (*Tipp*: `dir /?`)
+]
+#count2[
+ Der Befehl `dir` kann auch nur Dateien und Ordner mit bestimmten (angegebenen) Attributen auflisten:
+    + Mit welcher Option?
+    + Welche Attribute gibt es da überhaupt?
+    + Mit diesem Wissen: Wie kann man konkret die versteckten Dateien und Ordner im Stammverzeichnis (`\`) des Laufwerks `C:` auflisten?
+]
 == C.3~~~ Arbeiten mit CMD
-
-#set enum( //Nummerierung 
-  full: true,
-  start: 6,
-  numbering: numbly("{1:(1)}", "{2:a.})"),
-)
+#v(2mm)
 _Beachte:_
 
  - Sofern nicht ausdrücklich anders angegeben, sind alle Aufgaben unter der Verwendung der Kommandozeile zu erledigen, nicht mit dem GUI/Explorer! 
@@ -94,9 +76,9 @@ _Beachte:_
  - Benutzen Sie die Tabulatortaste zur Vervollständigung von Datei- und Verzeichnisnamen. 
 
 
-+ Erstellen Sie mittels `cmd.exe` folgenden Verzeichnisbaum (mit
+#count[ Erstellen Sie mittels `cmd.exe` folgenden Verzeichnisbaum (mit
     den Verzeichnissen `DIR_A`, `DIR_Ax` usw.) in einem _Unterverzeichnis_ `ORDNER_XXXX` des Benutzerverzeichnisses von `junioradmin` (also unterhalb `C:\Users\junioradmin`). XXXX
-
+]
 ```
        C:
        |
@@ -117,12 +99,6 @@ _Beachte:_
              + AllFiles
 
 ```
-
-#set enum( //Nummerierung 
-  full: true,
-  start: 7,
-  numbering: numbly("{1:(1)}", "{2:1.}", "{3: a.}"),
-)
 +  Erstellen Sie mit dem folgenden Befehl (und einer Umleitung der
     Ausgabe des Befehls `echo`) eine Datei namens `Datei_Ax1.txt` im Verzeichnis
     `ORDNER_XXXX`:\
@@ -185,12 +161,6 @@ _Beachte:_
 
 == D~~~ Umleitung der Ausgabe
 #v(2mm)
-
-#set enum( //Nummerierung 
-  full: true,
-  start: 16,
-  numbering: numbly("{1:(1)}", "{2:1.}"),
-)
 +  Sie kennen bereits den Befehl `tree` – lassen Sie sich erneut
     Ihre Verzeichnisstruktur (unter `ORDNER_XXXX` – mit Dateien) ausgeben.
     Schreiben Sie diese anschließend in die Datei `MyTree.txt`.

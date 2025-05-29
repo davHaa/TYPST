@@ -97,12 +97,12 @@
   )
 }
 
-//Nummerierung 1. 
-#let q-counter = counter("count2")
+//Nummerierung (1) - 1. 
+#let q-counter = counter("count")
 #let count2(body) = {
   set enum(
     full: true,
-    numbering: numbly("{1:1.}", "{2:i.}","{3:1.}", "{4:i.}"),
+    numbering: numbly("{1:(1)}", "{2:1.}"),
   )
   q-counter.step()
   context enum(
