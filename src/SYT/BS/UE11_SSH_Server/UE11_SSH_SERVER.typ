@@ -107,7 +107,7 @@ lokalen Systems gemacht haben -- sofern Sie sich auf dem System anmelden dürfen
         Verändern Sie die Datei: Schreiben Sie Ihren Namen, das aktuelle Datum
         sowie einen interessanten Text hinein.
 + Wechseln Sie wieder zu Windows und dem PuTTY Fenster und lassen
-        Sie sich den Inhalt der Datei *xx*`_ReadMe___YY__.txt` mit dem Befehl `cat` anzeigen (__SSMOODLE__).]
+        Sie sich den Inhalt der Datei *xx*`_ReadMe___YY__.txt` mit dem Befehl `cat` anzeigen (_SSMOODLE_).]
 #count6[Testen Sie Ihren _ssh_-Zugang auf Ihre Linux-VM über das Netzwerk von
     einem anderen Linux-Rechner aus, indem Sie eine zweite Instanz Ihrer Kali-Linux-VM erstellen (--> weiterer Linked-Clone. Nicht vergessen: Netzwerkschnittstelle auf _bridged_ (oder _host-only_) setzen):
 
