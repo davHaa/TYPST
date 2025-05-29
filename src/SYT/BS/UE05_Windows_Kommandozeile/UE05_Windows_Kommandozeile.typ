@@ -1,7 +1,7 @@
 #import "../resources/BS_Template.typ": create_page_template
 #import "../resources/BS_Template.typ": template
 #import "@preview/numbly:0.1.0": numbly
-#import "../resources/BS_Template.typ": count, count1, count2; 
+#import "../resources/BS_Template.typ": count, count1, count2, count7; 
 #show: template 
 
 #let filename = "05_Windows_Kommandozeile";
@@ -99,24 +99,28 @@ _Beachte:_
              + AllFiles
 
 ```
-+  Erstellen Sie mit dem folgenden Befehl (und einer Umleitung der
+#count[ Erstellen Sie mit dem folgenden Befehl (und einer Umleitung der
     Ausgabe des Befehls `echo`) eine Datei namens `Datei_Ax1.txt` im Verzeichnis
     `ORDNER_XXXX`:\
      ```
      echo Textinhalt von Datei_Ax1 > Datei_Ax1.txt
      ```
-+  Erstellen Sie sodann (noch im Ordner `ORDNER_XXXX`) die Dateien
+]
+#count[  Erstellen Sie sodann (noch im Ordner `ORDNER_XXXX`) die Dateien
     `Datei_Ax2.txt`, `Datei_Ay1.txt`, `Datei_Ay2.txt`,
     `Datei_Az1.txt `und `Datei_Az2.txt –` verwenden Sie die
     Komfortfunktionen zum Editieren der Kommandozeile _(welche?)._
-+  Kopieren Sie nun alle Dateien in die entsprechenden Verzeichnisse,
+]
+#count[  Kopieren Sie nun alle Dateien in die entsprechenden Verzeichnisse,
     also zum Beispiel `Datei_Ay1.txt` in das Verzeichnis
     `ORDNER_XXXX\DIR_A\DIR_Ay\DIR_Ay1`. Wie sieht hierbei der Befehl für das
     Kopieren aus (zumindest ein Beispiel)?
-+  Verschieben Sie nach dem Kopieren alle Dateien aus dem Verzeichnis
+]
+#count[  Verschieben Sie nach dem Kopieren alle Dateien aus dem Verzeichnis
     `ORDNER_XXXX` in das Unterverzeichnis `AllFiles`. Wie sieht der
     Befehl dazu aus?
-+  Stellen Sie fest, was der Befehl `tree` bewirkt (aufrufen!).
+]
+#count[ Stellen Sie fest, was der Befehl `tree` bewirkt (aufrufen!).
 
      Rufen Sie den Befehl `tree` nun so auf, dass, ausgehend vom
      Order `junioradmin`, Unterordner und Dateien angezeigt
@@ -125,62 +129,69 @@ _Beachte:_
 
      _Wichtig:_ Ausgabe des `tree`-Befehls in das Protokoll!
      Und auf Moodle/Eduvidual als Screenshot.
-
-+  Wechseln Sie in das Verzeichnis `AllFiles`. Lassen Sie sich
+]
+#count[  Wechseln Sie in das Verzeichnis `AllFiles`. Lassen Sie sich
     mit dem Befehl `type` den Inhalt der Datei `Datei_Ax1.txt` anzeigen.
 
     Kann man sich mit dem Befehl
     `type` den Inhalt aller Dateien anzeigen lassen? Wenn ja, wie
     macht man dies?
+]
+#count[  Finden Sie mit einer Hilfe-Funktion Ihrer Wahl heraus, was die Befehle `time` und `date` machen. Wie kann man diese Befehle ausführen, ohne das Datum oder die Systemzeit eingeben zu müssen?
+]
+#count[  Vergleichen Sie mit der Hilfe die Befehle `copy` und `robocopy`. Welche sind Ihrer Meinung nach die wesentlichsten Vorteile von `robocopy` gegenüber `copy`? Konsultieren Sie ggf. auch das Web, etwa _#link("https://de.wikipedia.org/wiki/Robocopy")[https://de.wikipedia.org/wiki/Robocopy]_.
+]
 
-+  Finden Sie mit einer Hilfe-Funktion Ihrer Wahl heraus, was die Befehle `time` und `date` machen. Wie kann man diese Befehle ausführen, ohne das Datum oder die Systemzeit eingeben zu müssen?
-
-+  Vergleichen Sie mit der Hilfe die Befehle `copy` und `robocopy`. Welche sind Ihrer Meinung nach die wesentlichsten Vorteile von `robocopy` gegenüber `copy`? Konsultieren Sie ggf. auch das Web, etwa _#link("https://de.wikipedia.org/wiki/Robocopy")[https://de.wikipedia.org/wiki/Robocopy]_.
-
-//Nummerierung fxen
-+  Beantworten Sie folgende Fragen:
-    1.  Welche Rolle spielen Groß- und Kleinschreibung bei Datei- und
+#count7[  Beantworten Sie folgende Fragen:
+    
+    +  Welche Rolle spielen Groß- und Kleinschreibung bei Datei- und
         Ordnernamen?
 
-        a. beim Anlegen?
-        b. beim Zugriff?
-        c. bei der Anzeige?
+        + beim Anlegen?
+        + beim Zugriff?
+        + bei der Anzeige?
 
-    2.  Was bedeuten die Parameter `/S` und `/Q` des Befehls
+    +  Was bedeuten die Parameter `/S` und `/Q` des Befehls
         `rmdir`?
-    3.  Im Verzeichnis `ORDNER_XXXX`: Was würde der Befehl
+    +  Im Verzeichnis `ORDNER_XXXX`: Was würde der Befehl
         `rmdir /S DIR_A` im obigen Beispiel bewirken?
-    4.  Besteht ein Unterschied zwischen folgenden Befehlen?
+    +  Besteht ein Unterschied zwischen folgenden Befehlen?
 
-        a.  `mkdir Verzeichnis fuer die Uebungen`
+        +  `mkdir Verzeichnis fuer die Uebungen`
         
-        b.  `mkdir "Verzeichnis fuer die Uebungen"`
+        +  `mkdir "Verzeichnis fuer die Uebungen"`
 
              Wenn ja, welcher? Wozu kann man diese Erkenntnis eventuell
              nutzen *(Stichwort: Effizientes Arbeiten mit der Kommandozeile)* ?
-
+]
 == D~~~ Umleitung der Ausgabe
 #v(2mm)
-+  Sie kennen bereits den Befehl `tree` – lassen Sie sich erneut
+#count[
+ Sie kennen bereits den Befehl `tree` – lassen Sie sich erneut
     Ihre Verzeichnisstruktur (unter `ORDNER_XXXX` – mit Dateien) ausgeben.
     Schreiben Sie diese anschließend in die Datei `MyTree.txt`.
+
     Wie macht man das _(Tipp: `Befehlszeile > Datei`)_ ?
-+  Öffnen Sie nun die Datei `MyTree.txt` im Editor
+]
+#count[  Öffnen Sie nun die Datei `MyTree.txt` im Editor
     `Notepad`. Welches Problem kann man evtl. erkennen (siehe GINF)?
     Wie kann das Problem (so vorhanden) gelöst werden?
-+  Hängen Sie der Datei (ohne Editor) anschließend folgende zwei Textzeilen an
+]
+#count[  Hängen Sie der Datei (ohne Editor) anschließend folgende zwei Textzeilen an
      (_Tipp:_ Für das ``<Datum>`` verwenden Sie die Ausgabe des Befehls `date` mit der richtigen Option → Befehl ins Protokoll einfügen!):
 
        `Printed on:`
 
        `<Datum>`
+]
 
-+  Geben Sie den Text-Inhalt der Datei 1:1 schlussendlich als Anhang in Ihr Übungsprotokoll und laden Sie die Textdatei auch auf Moodle/Eduvidual hoch!
-
-+  Lassen Sie den gesamten Systembaum (ohne Dateien) auf die Konsole
+#count[  Geben Sie den Text-Inhalt der Datei 1:1 schlussendlich als Anhang in Ihr Übungsprotokoll und laden Sie die Textdatei auch auf Moodle/Eduvidual hoch!
+]
+#count[ Lassen Sie den gesamten Systembaum (ohne Dateien) auf die Konsole
     schreiben. Allerdings so, dass Sie umblättern können (seitenweise).
+]
 
-+  Erzeugen Sie mit `notepad` eine
+#count7[  Erzeugen Sie mit `notepad` eine
     Textdatei `unsorted.txt`, die 10 Zeilen enthält, die jeweils
     ein (anderes) Paar „`Nachname Vorname`“ enthält (mit Ihrem Name und dem von 9 Ihrer Mitschüler
 	ohne Anführungszeichen) – und zwar unsortiert (also *nicht* in
@@ -191,5 +202,6 @@ _Beachte:_
     2.  Wie kann man eine zweite Datei `sorted.txt` erzeugen, die
         dieselbe Liste an Namen enthält, allerdings in *sortierter*
         Reihenfolge? (_Tipp:_ Ausgabeumleitung)
+]
 
-*Viel Spaß!*
+_Viel Spaß!_
