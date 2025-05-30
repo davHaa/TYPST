@@ -198,13 +198,19 @@ start:   NOP
          HLT
 ```
 
+#figure(
+  image("screenshot1.png", width: 80%),
+  caption: [Beispiel Anzeige
+  ],
+)
+
 #count1[Beantworte folgende Fragen
 + Welche Adressen haben die Variablen (rechts unter _Daten_)?
-+ Welche Werte stehen im Speicher (rechts unter Speicher) ab der
-Start-Adresse 4200H? Tipp: Gehen Sie am besten vom Assembler-Listing aus
-und geben Sie für jede Adresse den Wert sowie eine kurze Beschreibung an!
-+ Wie kann man Datenwerte und Befehle („das Programm“) unterscheiden?
-    Im Detail: Wie kann man den Wert bei 4200h (Welcher?) und den Wert in 4203h (welcher?) unterscheiden?
+
++ Welche Werte stehen im Speicher (rechts unter Speicher) ab der Start-Adresse 4200H? Tipp: Gehen Sie am besten vom Assembler-Listing aus und geben Sie für jede Adresse den Wert sowie eine kurze Beschreibung an! 
+
+
++ Wie kann man Datenwerte und Befehle („das Programm“) unterscheiden?Im Detail: Wie kann man den Wert bei 4200h (Welcher?) und den Wert in 4203h (welcher?) unterscheiden?
 + Was machen die Befehle `LDA`, `STA` und `INR`?
        _Tipp:_ Den Inhalt der Variablen sieht man rechts unter Daten _bzw.
          Speicher_!
