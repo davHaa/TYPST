@@ -5,7 +5,7 @@
 #import "../resources/BS_Template.typ" : my_box
 #show: template 
 
-#let filename = "12_Secure_File_Transfer";
+#let filename = "16_Linux_Zugriffssteurung";
 
 
 
