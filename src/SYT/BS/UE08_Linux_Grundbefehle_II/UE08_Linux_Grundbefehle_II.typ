@@ -192,3 +192,6 @@ aus der letzten Übung sollten noch vorhanden sein -- wenn nicht, erzeugen Sie d
 + Löschen Sie die ursprüngliche `Datei__YY__` und betrachten Sie erneut den Inhalt von `__NEUEDATEI__`: Welchen "Unterschied im Verhalten" (beim verbleibenden Hardlink) stellen Sie gegenüber der Verwendung eines Softlinks (symbolischer Link -- siehe zuvor) fest?
 + Versuchen Sie, einen _Hardlink_ für ein _Verzeichnis_ (etwa `~/Uebungsverzeichnis__YYYY__`) zu erstellen -- was stellen Sie fest?]
 
+#count[Wägen Sie ab bzw. recherchieren Sie: Was sind die Vorteile bzw. Nachteile von Softlinks (symbolischen Links) gegenüber Hardlinks (normalen Verzeichniseinträgen]
+
+_Viel Spaß!_
