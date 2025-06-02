@@ -65,9 +65,16 @@
   #show "__JUCHHEISSA__": [Hurra, gefunden!]
   #show "__NEUEDATEI__": [Datei99]
   #show "__ZEFIX__": [Oje, IHR VORNAME hat nichts gefunden!]
+  #show "SSPROTOKOLL": [Fügen Sie einen Screenshot in Ihr Protokoll ein!]
   #show ">>HEUTIGER_DATUMSSTRING<<": it => datetime.today().display("Heute ist [weekday], der [day]. [month]. [year].")
   #doc
 ]
+
+
+ #let my_box(title, body) = {
+    box(stroke: 1pt, outset: 4pt, title)
+}
+
 
 
 //Nummerierung (1) - a) 
