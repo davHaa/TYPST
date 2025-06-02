@@ -40,7 +40,7 @@
       #line(length: 100%)
       #table(
           columns: (50%, 50%), rows: (auto), align: (left, right), stroke: none,
-          [#text("Version vom 25. März 2025")],
+          [#text("Version vom 01. Juni 2025")],
           [#context [#here().page()]/#context[#counter(page).final().at(0)]]
       ),
     ]
