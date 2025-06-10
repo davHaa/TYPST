@@ -46,11 +46,11 @@
 
 #let template(doc) = [
   #show "XXXX": [(Setzen Sie hier Ihre Eduvidual-Kennung ein. z.B. `1234`)]
-  #show "YYYY": it => datetime.today().display("[year]")
+  #show "|YYYY|": it => datetime.today().display("[year]")
   #show "YY": it => datetime.today().display("[year repr:last_two]")
-  #show "LastYYYY": it => (datetime.today() - duration(days: 366)).display("[year]")
+  #show "|LastYYYY|": it => (datetime.today() - duration(days: 366)).display("[year]")
   #show "LastYY": it => (datetime.today() - duration(days: 366)).display("[year repr:last_two]")
-  #show "NextYYYY": it => (datetime.today() + duration(days: 366)).display("[year]")
+  #show "|NextYYYY|": it => (datetime.today() + duration(days: 366)).display("[year]")
   #show "NextYY": it => (datetime.today() + duration(days: 366)).display("[year repr:last_two]")
   #show ">>AP<<": [Ersetzen Sie `##` durch Ihre Eduvidual-Kennung modulo 100. d.h. die letzten 2 Stellen der Eduvidual-Kennung ohne führende 0 -- z.B.: 9901 durch 1]
   #show ">>SHOW_TEACHER<<": [Fügen Sie einen Screenshot in Ihr Protokoll ein und zeigen Sie Ihrem Lehrer, dass Sie diesen Punkt gelöst haben!]
