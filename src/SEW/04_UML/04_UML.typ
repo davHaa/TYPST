@@ -1,11 +1,10 @@
-#import "../resources/BS_Template.typ": create_page_template
-#import "../resources/BS_Template.typ": template
+#import "../resources/SEW_Template.typ": create_page_template
+#import "../resources/SEW_Template.typ": template
 #import "@preview/numbly:0.1.0": numbly
-#import "../resources/BS_Template.typ": count,count1, count2, count4; 
+#import "../resources/SEW_Template.typ": count, count2, count6; 
 #show: template 
 
-#let filename = "TESTNAME"
-
+#let filename = "05_py_kasiski";
 
 #set page(
   width: 210mm, 
@@ -16,5 +15,5 @@
   footer: create_page_template(filename).footer
 )
 
-
-= A~~~ Einführung
+== A~~~ Aufgabenstellung
+#v(2mm)
