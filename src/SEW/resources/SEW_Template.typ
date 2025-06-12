@@ -1,10 +1,5 @@
-
 #import "@preview/numbly:0.1.0": numbly
-<<<<<<< HEAD
 #let sharepoint = "https://htl3r.sharepoint.com/sites/IT-SYT-BS/Freigegebene%20Dokumente"
-=======
-#let sharepoint = "http://netzwerktechnik.htl.rennweg.at/"
->>>>>>> origin/main
 #let mainPage = "https://www.htlrennweg.at/"
 #let fach = "SEW 4"
 #let schoolyear = "2024/25" 
@@ -183,8 +178,4 @@
     start: q-counter.get().first(), 
     body
   )
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> origin/main
